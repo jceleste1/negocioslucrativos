@@ -11,7 +11,7 @@ $style = " style='font-size:10pt; margin:1; border-width:1; border-color:#3f691f
 echo "processando 2";
 include("classFilter.php");
 $filter = new classFilter();
-  
+  print_r($_REQUEST);
 $qryWhere = $filter->queryFilter(  $_REQUEST["typeAnManual"],
 								   $_REQUEST["sector"],
 								   $_REQUEST['typecompany'],
