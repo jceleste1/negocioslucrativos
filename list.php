@@ -21,11 +21,11 @@ $qryWhere = $filter->queryFilter(  $_REQUEST[typeAnManual],
 								   $_REQUEST['lupa_x'],
 								   $_REQUEST["txtSearch"] );
 
-$qry = "select count(*)  from announcement a  $qryWhere ";
+$qry = "select count(*) counts  from announcement a  $qryWhere ";
+$result =  $conn->query( $qry );
+$conta_linhas =  $result->fetch_assoc() ;
 
-$result = fMySQL_Connect($qry);
-List( $conta_linhas )= mysql_fetch_row($result);
-if( $conta_linhas ){
+if( $conta_linhas[counts] ){
 ?>
 <table   cellpadding="1" cellspacing="3" width='95%' >
 	<form action='mvcAnnouncement.php' method='post'>
@@ -57,10 +57,11 @@ if( $conta_linhas ){
 	$limit = "limit $linha_chegar,$exibe  ";
 
 	$qry = "select a.id,a.title,a.sector,a.typecompany,a.priceselling,datainc,a.price  from announcement a  $qryWhere   order by datainc desc $limit ";
-	$result2 = fMySQL_Connect($qry);
-	$_rows_ = mysql_num_rows($result2);
-	for ($i=0;$i<$_rows_;$i++)   {
-		 $line=mysql_fetch_assoc($result2);
+	$result =  $conn->query( $qry );
+
+
+	while ( $line = $result->fetch_assoc() ) {
+
 
 		 $font = "<font color='darkgreen'>";
 		 $bgcolor = " bgcolor='#FDFDFD'";
