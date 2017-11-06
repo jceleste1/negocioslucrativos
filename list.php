@@ -20,10 +20,6 @@ $qryWhere = $filter->queryFilter(  $_REQUEST["typeAnManual"],
 								   $_REQUEST['lupa_x'],
 								   $_REQUEST["txtSearch"] );
 
-								   
-
-$conn = connectDB();
-
 
 $qry = "select count(*) counts  from announcement a  $qryWhere ";
 $result =  $conn->query( $qry );  
