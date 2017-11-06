@@ -19,6 +19,8 @@ while ( $line = $result->fetch_assoc() ) {
 	if(  $line[typecompany] == "C")
 	       $comercio =  $line[count];	   	   
 }	  
+
+print_r($line);
 ?>
 
 <table   width='95%' cellpadding="1" cellspacing="0" border=0 align='center'>
