@@ -1,8 +1,7 @@
-<center>
+<center> processando
+<?php 
+include("searchNew.php");
 
-<?include("searchNew.php");?>
-
-<?
 $style = " style='font-size:10pt; margin:1; border-width:1; border-color:#3f691f; border-style:outset;text-align:right;'";
 
 $registroInicial = 0;
@@ -40,7 +39,7 @@ if( $conta_linhas[counts] ){
 		<td bgcolor='white' nowrap='nowrap' height='35 px'><font class='subtitulo3'>Data do Anúncio</font> </td>
 	</tr>
 
-<?
+<?php
 	$action = "list";
 	$http = "mvcAnnouncement.php";
 	$exibe = "10";
