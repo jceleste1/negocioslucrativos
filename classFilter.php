@@ -20,11 +20,7 @@ class classFilter{
 						 $qryWhere .=   "  and description LIKE CONVERT( _utf8 '%$value%' USING latin1 ) COLLATE latin1_swedish_ci  and  (  title LIKE CONVERT( _utf8 '%$value%' USING latin1 ) COLLATE latin1_swedish_ci   )   ";
 
 				}
-				if($qryWhere)
-				{
-					$qry = "insert into  searchword (words,id_user,datainc) values( \"".$txtSearch."\",'".$_SESSION[id]."', now() )";
-					fMySQL_Connect($qry);
-				}
+				
 			}
 
 			return $qryWhere;
@@ -39,7 +35,7 @@ class classFilter{
 
 
 
-		    $qryWhere .= queryWord( $lupa, $txtSearch );
+		    $qryWhere .= $this->queryWord( $lupa, $txtSearch );
 
 
 			if( $sector  )
