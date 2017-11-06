@@ -19,9 +19,12 @@ $qryWhere = $filter->queryFilter(  $_REQUEST["typeAnManual"],
 								   $_REQUEST['zone'] ,
 								   $_REQUEST['lupa_x'],
 								   $_REQUEST["txtSearch"] );
-echo "processando 3 ".$conn;     
 
+echo "processando 4";
 $conn = connectDB();
+
+echo "processando 5";
+
 $qry = "select count(*) counts  from announcement a  $qryWhere ";
 $result =  $conn->query( $qry );  
 $conta_linhas =  $result->fetch_assoc() ;
