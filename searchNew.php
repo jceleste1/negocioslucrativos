@@ -1,5 +1,5 @@
 <div id="divSearch">
-<form action="mvcAnnouncement.php" id="formSearch"   METHOD="GET>
+<form action="mvcAnnouncement.php" id="formSearch"   METHOD=GET>
 <input type=hidden name='action' value="list">
 
 	<table   width='95%' cellpadding="3" cellspacing="1" border=0  align='center'>
