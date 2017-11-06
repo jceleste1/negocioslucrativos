@@ -133,7 +133,7 @@
 
 </div>
 
-<form action="mvcAnnouncement.php" id="formSearch2" METHOD=get>
+<form action="mvcAnnouncement.php" id="formSearch2" METHOD=POST>
 <input type=hidden name='action' id='action' value='list'/>
 <input type=hidden name='txtSearch' id='txtSearch2'/>
 <input type=hidden name='sector' id='sector2'/>
@@ -144,7 +144,7 @@
 <input type=hidden name='typeAnManual' id='typeAnManual2'/>
 </form>
 
-<form action="mvcAnnouncement.php" id="formAnn" METHOD=GET>
+<form action="mvcAnnouncement.php" id="formAnn" METHOD=POST>
 <input type=hidden name='action' id='action' value='formAnn'/>
 <input type=hidden name='txtSearch' id='txtSearch3'/>
 <input type=hidden name='sector' id='sector3'/>
