@@ -14,7 +14,7 @@
 	require_once "ismobile/ismobile.class.php";
 	$ismobi = new IsMobile();
 
-	
+	echo  $_REQUEST["action"] ; exit;
 	switch( $_REQUEST["action"] ){
 		case "postAnnouncementBuy":
 				$_SESSION["addAnnouncement"] = true;
