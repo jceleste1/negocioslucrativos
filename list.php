@@ -49,17 +49,14 @@ if( $conta_linhas ){
 	$http = "mvcAnnouncement.php";
 	$exibe = "10";
 	$pag = ($_GET['pag']);
-echo "passo 1";
 	if( !$pag )
 	   $pag = "1";
 	else
 	   $pag = $_REQUEST['pag'] ;
-echo "passo 2";
+   
 	$total_paginas = ceil(($conta_linhas/$exibe));
 	$linha_chegar = (($pag-1)*$exibe);
-echo "passo 3";
 	$limit = "limit $linha_chegar,$exibe  ";
-echo "passo 4";
 	$qry = "select a.id,a.title,a.sector,a.typecompany,a.priceselling,datainc,a.price  from announcement a  $qryWhere   order by datainc desc $limit ";
 	$result =  $conn->query( $qry );
 
