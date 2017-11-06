@@ -27,8 +27,8 @@ $conn = connectDB();
 
 $qry = "select count(*) counts  from announcement a  $qryWhere ";
 $result =  $conn->query( $qry );  
-$conta_linhas =  $result->fetch_assoc() ;
-$conta_linhas = $conta_linhas[counts];
+$row =  $result->fetch_assoc() ;
+$conta_linhas = $row[counts];
 if( $conta_linhas ){
 ?>
 <table   cellpadding="1" cellspacing="3" width='95%' >
@@ -62,7 +62,6 @@ echo "passo 3";
 echo "passo 4";
 	$qry = "select a.id,a.title,a.sector,a.typecompany,a.priceselling,datainc,a.price  from announcement a  $qryWhere   order by datainc desc $limit ";
 	$result =  $conn->query( $qry );
-	$qry = "select a.i
 
 	while ( $line = $result->fetch_assoc() ) {
 
