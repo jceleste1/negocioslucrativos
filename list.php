@@ -1,4 +1,4 @@
-<center> processando
+<center> 
 <?php 
 include("searchNew.php");
 
@@ -12,7 +12,7 @@ $style = " style='font-size:10pt; margin:1; border-width:1; border-color:#3f691f
 include("classFilter.php");
 $filter = new classFilter();
   
-$qryWhere = $filter->queryFilter(  $_REQUEST[typeAnManual],
+$qryWhere = $filter->queryFilter(  $_REQUEST["typeAnManual"],
 								   $_REQUEST["sector"],
 								   $_REQUEST['typecompany'],
 								   $_REQUEST['billing'],
