@@ -138,43 +138,19 @@ $conexao = "";
 
 ####### Funcao de conexao ao banco de dados###########
 #
-function fMySQL_Connect($qry,$DB=""){
+function connectDB(){
 
- Global $conexao ;
+  $database = "brasilforte";
+  $host = null;
+  $user = "root";
+  $password = "nathan10";
+  $port = null;
+  $socket = "/cloudsql/brasilforte-183120:brasilfortedb";
+  $connection = new mysqli( $host, $user, $password, $database, $port, $socket );
 
- 
 
- if( ! $conexao ) {
-         $conexao =  mysql_connect( "localhost","root","Isr0704@");
 
-         if(  mysql_error() ) {
-	     echo  mysql_error() ;
-             $msg = "ERRO NO BANCO DE DADOS" + NMDATABASE;
-             mail(email_RESP,$msg,$msg);
-             echo "Erro na conexão com MySql "+ mysql_error() ;
-              //   exit;
-         }
-
-  }
-
-         
-
-  $DB = "brasilforte";
-  
-
-  
-  
-  $result = mysql( $DB , $qry );
-  if( mysql_error() ){
-    	
-             $msg = "ERRO NA QUERY BRASIL FORTE\n\n $qry " ;
-             mail(email_RESP,"$msg",$msg);
-
-             echo  $qry . " <br> ".mysql_error(). "<br>";
-             
-  }
-
-  return $result;
+  return $connection;
 }
 
 #
