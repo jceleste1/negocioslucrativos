@@ -33,14 +33,14 @@ class classFilter{
 
 
 		function queryFilter( $typeAnManual,$sector,$typeCompany, $billing, $zone, $lupa, $txtSearch  ){
-echo  "passo 1";
+
 
 			$qryWhere = "where typeannouncement='$typeAnManual'";
-echo  "passo 2";
 
 
-		    $qryWhere .= $this->queryWord( $lupa, $txtSearch );
-echo  "passo 3";
+
+		    $qryWhere .= queryWord( $lupa, $txtSearch );
+
 
 			if( $sector  )
 				$qryWhere .= " and a.sector='$sector'";
@@ -53,7 +53,7 @@ echo  "passo 3";
 
 			if( $zone )
 				$qryWhere .= " and zone='$zone'";
-echo  "passo 4";
+
 
 			return $qryWhere;
 		}
