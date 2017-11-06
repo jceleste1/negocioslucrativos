@@ -1,4 +1,4 @@
-<center> PROCESSSANDO
+<center> 
 <?php 
 include("searchNew.php");
 
@@ -8,10 +8,10 @@ $registroInicial = 0;
 $ultimoRegistro = 0;
 $style = " style='font-size:10pt; margin:1; border-width:1; border-color:#3f691f; border-style:outset;text-align:right;'";
 
-echo "processando 2";
+
 include("classFilter.php");
 $filter = new classFilter();
-  print_r($_REQUEST);
+
 $qryWhere = $filter->queryFilter(  $_REQUEST["typeAnManual"],
 								   $_REQUEST["sector"],
 								   $_REQUEST['typecompany'],
@@ -20,16 +20,16 @@ $qryWhere = $filter->queryFilter(  $_REQUEST["typeAnManual"],
 								   $_REQUEST['lupa_x'],
 								   $_REQUEST["txtSearch"] );
 
-echo "processando 4";
+								   
+
 $conn = connectDB();
 
-echo "processando 5";
 
 $qry = "select count(*) counts  from announcement a  $qryWhere ";
 $result =  $conn->query( $qry );  
 $conta_linhas =  $result->fetch_assoc() ;
-echo $qry;
-if( $conta_linhas[counts] ){
+$conta_linhas = $conta_linhas[counts];
+if( $conta_linhas ){
 ?>
 <table   cellpadding="1" cellspacing="3" width='95%' >
 	<form action='mvcAnnouncement.php' method='post'>
@@ -49,20 +49,20 @@ if( $conta_linhas[counts] ){
 	$http = "mvcAnnouncement.php";
 	$exibe = "10";
 	$pag = ($_GET['pag']);
-
+echo "passo 1";
 	if( !$pag )
 	   $pag = "1";
 	else
 	   $pag = $_REQUEST['pag'] ;
-
+echo "passo 2";
 	$total_paginas = ceil(($conta_linhas/$exibe));
 	$linha_chegar = (($pag-1)*$exibe);
-
+echo "passo 3";
 	$limit = "limit $linha_chegar,$exibe  ";
-
+echo "passo 4";
 	$qry = "select a.id,a.title,a.sector,a.typecompany,a.priceselling,datainc,a.price  from announcement a  $qryWhere   order by datainc desc $limit ";
 	$result =  $conn->query( $qry );
-
+	$qry = "select a.i
 
 	while ( $line = $result->fetch_assoc() ) {
 
