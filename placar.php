@@ -4,8 +4,7 @@
 $conn = connectDB();
 
 $qry = "select count(*) count,typecompany 	  from announcement  group by typecompany";
-echo $qry;
-$result =  $conn->query( $sql );
+$result =  $conn->query( $qry );
 
 
 while ( $line = $result->fetch_assoc() ) {
