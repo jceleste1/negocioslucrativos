@@ -24,7 +24,7 @@ $qryWhere = $filter->queryFilter(  $_REQUEST[typeAnManual],
 $qry = "select count(*) counts  from announcement a  $qryWhere ";
 $result =  $conn->query( $qry );
 $conta_linhas =  $result->fetch_assoc() ;
-
+echo $qry;
 if( $conta_linhas[counts] ){
 ?>
 <table   cellpadding="1" cellspacing="3" width='95%' >
