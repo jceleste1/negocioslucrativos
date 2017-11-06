@@ -7,7 +7,7 @@ $qry = "select count(*) count,typecompany 	  from announcement  group by typecom
 $result =  $conn->query( $sql );
 
 
-while ( $row = $result->fetch_assoc() ) {
+while ( $line = $result->fetch_assoc() ) {
 
 	 if(  $line[typecompany] == "S")
 	       $servico =  $line[count];
