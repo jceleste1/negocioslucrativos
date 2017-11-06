@@ -7,9 +7,7 @@
 
 
 	include("config.inc");
-
-connectDB();
-	
+$conn = connectDB();
 	require_once "ismobile/ismobile.class.php";
 	$ismobi = new IsMobile();
 
