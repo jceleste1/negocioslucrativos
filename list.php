@@ -1,4 +1,4 @@
-<center> 
+<center> PROCESSSANDO
 <?php 
 include("searchNew.php");
 
@@ -8,7 +8,7 @@ $registroInicial = 0;
 $ultimoRegistro = 0;
 $style = " style='font-size:10pt; margin:1; border-width:1; border-color:#3f691f; border-style:outset;text-align:right;'";
 
-
+echo "processando 2";
 include("classFilter.php");
 $filter = new classFilter();
   
