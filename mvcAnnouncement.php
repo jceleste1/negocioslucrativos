@@ -289,8 +289,7 @@
 	if( !$rot )
 		$rot = $_REQUEST["action"].".php";
 		
-echo $rot;
-echo "parei aqui";  exit;
+
 	include("checkSession.php")	;
 
 	include("nlTemplate.php");
