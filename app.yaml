@@ -18,3 +18,6 @@ handlers:
 
 - url: /jquery
   static_dir: jquery
+
+- url: /js
+  static_dir: js
