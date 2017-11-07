@@ -171,7 +171,7 @@
 								 a.priceselling,a.numberemployee,a.conditionpart,a.zone,
 								 a.viewcount,a.confidencial,r.name,r.phonemobile,r.phone,
 								 a.price,a.www  from announcement a, register r 
-								 where  a.id_user =r.id and    a.id='%s'", mysqli_real_escape_string($conn,$_REQUEST["id_adv"]) );	echo $qry;			
+								 where  a.id_user =r.id and    a.id='%s'", mysqli_real_escape_string($conn,$_REQUEST["id_adv"]) );				
 			
 				$result =  $conn->query( $qry );
 				$dataAnnouncement = $result->fetch_assoc() ;
