@@ -160,13 +160,13 @@
 				}
 
 				$CONTROLSESSION = true;
-				
+				echo "processando ";
 				$qry = sprintf("select a.title,a.typecompany,a.sector,a.billing, 
 				                 a.description,a.datainc,a.status,a.typeannouncement,
 								 a.priceselling,a.numberemployee,a.conditionpart,a.zone,
 								 a.viewcount,a.confidencial,r.name,r.phonemobile,r.phone,
 								 a.price,a.www  from announcement a, register r 
-								 where  a.id_user =r.id and    a.id='%s'", $conn->mysqli_real_escape_string($_REQUEST["id_adv"]) );				
+								 where  a.id_user =r.id and    a.id='%s'", $conn->mysqli_real_escape_string($_REQUEST["id_adv"]) );	echo $qry;			
 			
 				$result =  $conn->query( $qry );
 				$dataAnnouncement = $result->fetch_assoc() ;
