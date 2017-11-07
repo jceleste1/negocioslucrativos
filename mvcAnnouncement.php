@@ -6,8 +6,9 @@
    header('Content-Type: text/html; charset=ISO-8859-1');
 
 
-	include("config.inc");
-$conn = connectDB();
+	include("config.inc"); 
+    $conn = connectDB();
+	
 	require_once "ismobile/ismobile.class.php";
 	$ismobi = new IsMobile();
 
@@ -165,19 +166,19 @@ $conn = connectDB();
 								 a.priceselling,a.numberemployee,a.conditionpart,a.zone,
 								 a.viewcount,a.confidencial,r.name,r.phonemobile,r.phone,
 								 a.price,a.www  from announcement a, register r 
-								 where  a.id_user =r.id and    a.id='%s'", mysql_real_escape_string($_REQUEST["id_adv"],$conexao) );				
-					
-				$result = fMySQL_Connect($qry);
-				$dataAnnouncement = mysql_fetch_array( $result ) ;
+								 where  a.id_user =r.id and    a.id='%s'", $conn->mysqli_real_escape_string($_REQUEST["id_adv"]) );				
+			
+				$result =  $conn->query( $qry );
+				$dataAnnouncement = $result->fetch_assoc() ;
 
 				$viewcount = ( $dataAnnouncement["viewcount"] +1 ) ;
 
 				$rot = "viewAnnouncement.php";
 
 				$qry = sprintf("update  announcement set viewcount=$viewcount where id='%s'", 
-				mysql_real_escape_string($_REQUEST["id_adv"],$conexao) );				
+				$conn->mysqli_real_escape_string($_REQUEST["id_adv"]) );				
 
-				$res = fMySQL_Connect($qry);
+				$res =  $conn->query( $qry );
 				break;
 		case "sendMsg":
 				$qry = "select a.id_user,r.name,r.mail, a.title,a.typeannouncement from announcement  a,register r  where a.id='".$_REQUEST['id_adv']."' and a.id_user=r.id";
