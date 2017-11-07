@@ -1,6 +1,6 @@
 
-<link rel="stylesheet" type="text/css" href="css/menu.css" />		
-<link rel="stylesheet" type="text/css" href="css/ng1024_768.css" />		
+<link rel="stylesheet" type="text/css" href="./css/menu.css" />		
+<link rel="stylesheet" type="text/css" href="./css/ng1024_768.css" />		
 
 <link rel="stylesheet" type="text/css" href="css/chosen/chosen.css" />		
 	
