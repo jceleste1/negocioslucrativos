@@ -32,11 +32,12 @@
 				datainc,status,typeannouncement,priceselling,numberemployee,
 				conditionpart,zone,confidencial,price,www from announcement 
 				where id='%s' and id_user='".$_SESSION["id"]."'", 
-				mysql_real_escape_string($_REQUEST["id_adv"],$conexao) );				
+				mysqli_real_escape_string($conn,$_REQUEST["id_adv"] ) );				
 				
-				$result = fMySQL_Connect($qry);
+				$result =  $conn->query( $qry );
+				$dataAnnouncement = $result->fetch_assoc() ;
 
-				$dataAnnouncement = mysql_fetch_array( $result ) ;
+			
 				$action = "updateAnnouncement";
 				$rot = "formAnnouncement.php";
 				break;
@@ -44,9 +45,9 @@
 		case "deleteAnnouncement";
 				$qry = sprintf("delete from announcement where 
 				id='%s' and id_user='".$_SESSION["id"]."'", 
-				mysql_real_escape_string($_REQUEST["id_adv"],$conexao) );				
+				mysqli_real_escape_string($conn,$_REQUEST["id_adv"] ) );				
 				
-				$result = fMySQL_Connect($qry);
+				$result =  $conn->query( $qry );
 				$rot = "inhome.php";
 				break;
 		case "recAnnouncement":
@@ -59,13 +60,14 @@
 					   $price="";
 
 					$qry = "insert into  announcement ( title,typecompany,sector,billing,description,datainc,status,typeannouncement,id_user,priceselling,numberemployee,conditionpart,zone,confidencial,price,www,publish )values( \"".$_REQUEST[title]."\",\"".$_REQUEST['typecompany']."\",".$_REQUEST[sector].",".$_REQUEST[billing].",\"".$_REQUEST['description']."\",now(),'V',\"".$_REQUEST[typeannouncement]."\" ,".$_SESSION["id"].",\"".$price."\",\"".$_REQUEST["numberemployee"]."\",\"".$_REQUEST["conditionpart"]."\",\"".$_REQUEST["zone"]."\",'".$_REQUEST["confidencial"]."','".$price."',\"".$_REQUEST["www"]."\",'Y')";
-
-					fMySQL_Connect($qry);
+				
+					$result =  $conn->query( $qry );
+			
 
 				}
 				$_SESSION["addAnnouncement"] = false;
 				$rot = "inhome.php";
-				$idAnnouncement = mysql_insert_id();
+				$idAnnouncement = mysqli_insert_id($conn);
 
 
 				break;
@@ -81,15 +83,18 @@
 				if( $_REQUEST[name] ){
 
 					$qry = "select name,mail,password,id from register where mail='".$_REQUEST['mail']."'"; 
-					$result = fMySQL_Connect($qry);
-					$dataUser = mysql_fetch_array( $result ) ;					
+					$result =  $conn->query( $qry );
+					$dataUser = $result->fetch_assoc() ;
+
+
+
 					$idUser = $dataUser[id];
 					if( !$idUser ){
 						$qry = "insert into register( name,mail , password ,datainc  ) values( \"".$_REQUEST["name"]."\",\"".$_REQUEST["mail"]."\", \"".$_REQUEST[password]."\", now() )";
-						fMySQL_Connect($qry);
+						$result =  $conn->query( $qry );
 						
 						$_SESSION["nameUser"] = $name;
-						$idUser =  mysql_insert_id();
+						$idUser =  mysqli_insert_id($conn);
 						$_SESSION["id"] =  $idUser;
 						$_SESSION["mail"] = $_REQUEST["mail"];
 						$_SESSION["nameUser"] = $_REQUEST["name"];
@@ -109,9 +114,9 @@
 					   $price="";
 
 					$qry = "insert into  announcement ( title,typecompany,sector,billing,description,datainc,status,typeannouncement,id_user,priceselling,numberemployee,conditionpart,zone,confidencial,price,www, publish )values( \"".$_REQUEST[txtSearch]."\",\"".$_REQUEST['typecompany']."\",".$_REQUEST[sector].",".$_REQUEST[billing].",\"".$_REQUEST['description']."\",now(),'V',\"".$_REQUEST[typeannouncement]."\" ,$idUser,\"".$price."\",\"".$_REQUEST["numberemployee"]."\",\"".$_REQUEST["conditionpart"]."\",\"".$_REQUEST["zone"]."\",'".$_REQUEST["confidencial"]."','".$price."',\"".$_REQUEST["www"]."\",'$publish')";
-					fMySQL_Connect($qry);
+					$result =  $conn->query( $qry );
 					
-					$idAnnouncement = mysql_insert_id();
+					$idAnnouncement = mysqli_insert_id($conn);
 					$viewMessagePostAnnounce = "true";
 				}	
 				if( !$dataUser[id] )				
@@ -146,8 +151,8 @@
 								 datainc=now(),
 								 www =\"".$_REQUEST["www"]."\" 
 								 where id_user='".$_SESSION["id"]."' and  
-								 id='%s'", mysql_real_escape_string($_REQUEST["id_adv"],$conexao) );
-				fMySQL_Connect($qry);
+								 id='%s'", mysqli_real_escape_string($conn, $_REQUEST["id_adv"] ) );
+				$conn->query( $qry );
 
 				$rot = "inhome.php";
 				break;
@@ -183,8 +188,8 @@
 		case "sendMsg":
 				$qry = "select a.id_user,r.name,r.mail, a.title,a.typeannouncement from announcement  a,register r  where a.id='".$_REQUEST['id_adv']."' and a.id_user=r.id";
 
-				$result = fMySQL_Connect($qry);
-				$dataAnnouncementUser = mysql_fetch_array( $result ) ;
+				$result =  $conn->query( $qry );
+				$dataAnnouncementUser = $result->fetch_assoc() ;
 
 
 				$subjectMail = "Interessado sobre o anuncio ".$dataAnnouncementUser["title"]  ;
@@ -226,7 +231,7 @@
 
 				$qry = "insert into contatos ( id_userto,msg,datainc,id_userof ) values (  '";
 				$qry .= $dataAnnouncementUser["id_user"]."','".$_REQUEST["message"]."',now(),'".$_SESSION["id"]."')";
-				$result = fMySQL_Connect($qry);
+					$result =  $conn->query( $qry );
 
 				$msg = 1;
 				$rot = "msgSystem.php";
@@ -264,7 +269,7 @@
 			break;
 	case "searchbussiness";
 		$qry = "insert into searchbussiness (id_user, name      ,    mail     ,      content ,datainc )	values( '".$_SESSION['id']."','$_REQUEST[name]','$_REQUEST[mail]','$_REQUEST[content]', now() ) ";
-		fMySQL_Connect($qry);
+		$conn->query( $qry );
 
 		$msgSearchbussiness = "<tr><td colspan=4 align='center'><font class='subtitulo3'>Seus dados foram enviados com sucesso !!!<br/> Agradecemos por utilizar o site NegociosLucrativos.com</font></td></tr>";
 
