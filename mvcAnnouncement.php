@@ -298,7 +298,7 @@ break;
 	include("nlTemplate.php");
 
 
-
+mysqli_close ( $conn );
 
 
 
