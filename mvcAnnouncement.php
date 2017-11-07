@@ -175,7 +175,7 @@
 			
 				$result =  $conn->query( $qry );
 				$dataAnnouncement = $result->fetch_assoc() ;
-
+break;
 				$viewcount = ( $dataAnnouncement["viewcount"] +1 ) ;
 
 				$rot = "viewAnnouncement.php";
