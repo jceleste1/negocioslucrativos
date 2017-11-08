@@ -4,7 +4,8 @@ Bem vindo <b><?=$_SESSION["nameUser"]?></b>
 <table align='center'>
 <?
 $qry = "select id  from contatos c where c.id_userto ='".$_SESSION["id"]."' and c.dateread is null";
-
+echo $qry;
+exit;
 $result =  $conn->query( $qry );
 while ( $line = $result->fetch_assoc() ) {
 ?>
@@ -23,11 +24,6 @@ while ( $line = $result->fetch_assoc() ) {
 </tr>
 <?}?>
 
-<?if( $viewMessagePostMatter ){?>
-<tr>
-	<td align='center' colspan=2>Inclusão de matéria feita com sucesso</td>
-</tr>
-<?}?>
 
 <tr>
 	<td align='center'>
