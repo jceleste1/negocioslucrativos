@@ -83,7 +83,7 @@ if( $rows ){
 	<td bgcolor='white'>&nbsp;&nbsp; </td>
 
 </tr>
-<?
+<? $i = 0;
 	while ( $line = $result->fetch_assoc() ) {
 	
 		 $font = "<font color=darkblue>";
