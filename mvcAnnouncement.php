@@ -174,9 +174,7 @@
 								 where  a.id_user =r.id and    a.id='%s'", mysqli_real_escape_string($conn,$_REQUEST["id_adv"]) );				
 		
 				$result =  $conn->query( $qry );
-				while ($dataAnnouncement = $result->fetch_assoc() ) {
-				
-				}
+			
 					
 				$viewcount = ( $dataAnnouncement["viewcount"] +1 ) ;
 
