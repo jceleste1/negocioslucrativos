@@ -6,10 +6,11 @@ if( !$output )
 	exit;
 
 $qry = sprintf("select  id,ext from photoEnterprise  where  idAnnouncement='%s'",
-    mysql_real_escape_string($_REQUEST["id_adv"],$conexao) );
+mysqli_real_escape_string($conn,$_REQUEST["id_adv"] ) );
 
-$result = fMySQL_Connect($qry);
-$rows = mysql_num_rows($result);
+$result =  $conn->query( $qry );
+$rows = mysqli_num_rows($result);
+
 
 if( $rows > 0 )
 {
@@ -27,11 +28,10 @@ if( $rows > 0 )
 					<ul class="clearfix">
 					
 					<?	
-					$result = fMySQL_Connect($qry);
-					$rows = mysql_num_rows($result);
-					for ($i=0;$i<$rows;$i++)   	
-					{  
-					 $line=mysql_fetch_assoc($result);
+
+					$result =  $conn->query( $qry );
+					while ( $line = $result->fetch_assoc() ) {
+					
 					?>
 					
 						<li id="image<?=$i?>">
