@@ -3,9 +3,10 @@
 Bem vindo <b><?=$_SESSION["nameUser"]?></b>
 <table align='center'>
 <?
+
 $qry = "select id  from contatos c where c.id_userto ='".$_SESSION["id"]."' and c.dateread is null";
 echo $qry;
-exit;
+
 $result =  $conn->query( $qry );
 while ( $line = $result->fetch_assoc() ) {
 ?>
