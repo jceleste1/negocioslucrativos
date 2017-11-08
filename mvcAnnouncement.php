@@ -174,7 +174,7 @@
 								 where  a.id_user =r.id and    a.id='%s'", mysqli_real_escape_string($conn,$_REQUEST["id_adv"]) );				
 		
 				$result =  $conn->query( $qry );
-
+ECHO "<pre>";
 while ( $line = $result->fetch_assoc() ) {
 	print_r($line);
 }
