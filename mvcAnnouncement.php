@@ -174,18 +174,10 @@
 								 where  a.id_user =r.id and    a.id='%s'", mysqli_real_escape_string($conn,$_REQUEST["id_adv"]) );				
 		
 				$result =  $conn->query( $qry );
-ECHO "<pre>";
-while ( $line = $result->fetch_assoc() ) {
-	print_r($line);
-}
-
-
-				echo $qry;  break;
-				$dataAnnouncement = $result->fetch_assoc() ;
-
+				while ($dataAnnouncement = $result->fetch_assoc() ) {
+				}
 				$viewcount = ( $dataAnnouncement["viewcount"] +1 ) ;
-			
-break;
+
 				$rot = "viewAnnouncement.php";
 				mysqli_close ( $conn );
 
