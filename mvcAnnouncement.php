@@ -172,10 +172,10 @@
 								 a.viewcount,a.confidencial,r.name,r.phonemobile,r.phone,
 								 a.price,a.www  from announcement a, register r 
 								 where  a.id_user =r.id and    a.id='%s'", mysqli_real_escape_string($conn,$_REQUEST["id_adv"]) );				
-			echo $qry;  break;
+			
 				$result =  $conn->query( $qry );
 				$dataAnnouncement = $result->fetch_assoc() ;
-
+echo $qry;  break;
 				$viewcount = ( $dataAnnouncement["viewcount"] +1 ) ;
 				echo "parou...............";
 break;
