@@ -175,10 +175,9 @@
 		
 				$result =  $conn->query( $qry );
 				while ($dataAnnouncement = $result->fetch_assoc() ) {
-echo "<pre>";  print_r($dataAnnouncement);
 				
 				}
-					break;
+					
 				$viewcount = ( $dataAnnouncement["viewcount"] +1 ) ;
 
 				$rot = "viewAnnouncement.php";
