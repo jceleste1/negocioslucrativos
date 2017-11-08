@@ -175,13 +175,13 @@
 		
 				$result =  $conn->query( $qry );
 				while ($dataAnnouncement = $result->fetch_assoc() ) {
+echo "<pre>";  print_r($dataAnnouncement);
+					break;
 				}
 				$viewcount = ( $dataAnnouncement["viewcount"] +1 ) ;
 
 				$rot = "viewAnnouncement.php";
-				mysqli_close ( $conn );
-
-				$conn = connectDB();
+			
 
 				$qry = sprintf("update  announcement set viewcount=$viewcount where id='%s'", 
 				mysqli_real_escape_string($conn,$_REQUEST["id_adv"]) );				
