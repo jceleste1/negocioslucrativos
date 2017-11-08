@@ -1,4 +1,7 @@
   <?
+
+	while ($dataAnnouncement = $result->fetch_assoc() ) {
+
 	   if( $dataAnnouncement["$typeannouncement"] == "B" ){
 		   $labelZone = "Local de preferência ";
 		   $labelCondition = "Condições para a compra";
@@ -197,7 +200,9 @@
 	</td>
 </tr>
 
-<? } ?>
+<? }
+
+}?>
 
 </TABLE>
 
