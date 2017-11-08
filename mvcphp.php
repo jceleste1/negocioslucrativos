@@ -66,11 +66,10 @@
 
 			$qry = sprintf( "select name,mail,password from 
 			register where mail='%s'",
-			mysql_real_escape_string($_REQUEST['mail'],$conexao) );
-			
-			$result = fMySQL_Connect($qry);
-			if( mysql_num_rows($result ) ){
-				$aUser = mysql_fetch_array( $result ) ;
+			mysqli_real_escape_string($conn,$_REQUEST['mail'] ) );
+			$result =  $conn->query( $qry );
+
+			while ( $aUser = $result->fetch_assoc() ) {
 
 			    $headers  =  "From: Suporte negocioslucrativos.com <jceleste@brasilforte.com.br> To: ".$aUser["name"]."<".$aUser["mail"].">";
 				$msg = "Prezado Sr(a) ".$aUser["name"]." \n"; 
@@ -79,6 +78,7 @@
 				$msg .= "Atenciosamente \n";
 				$msg .= "Equipe http://negocioslucrativos.com \n";
 			    $subject = "Senha de acesso  para o site negocioslucrativos.com";
+			}
 
 				mail($aUser["mail"],$subject,$msg,$headers  );			
 				$rot = "msgSystem.php";
