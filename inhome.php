@@ -8,7 +8,8 @@ $qry = "select id  from contatos c where c.id_userto ='".$_SESSION["id"]."' and 
 echo $qry;
 
 $result =  $conn->query( $qry );
-while ( $line = $result->fetch_assoc() ) {
+$rows = mysqli_num_rows($result);
+if( $rows ) {
 ?>
 <tr>
 	<td align='center' colspan=2 valign="top">
