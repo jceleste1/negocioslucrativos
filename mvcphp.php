@@ -14,10 +14,8 @@
 
  
 	include("config.inc");
+	 $conn = connectDB();
 	
-	if( ! $conexao ) {
-		$conexao =  mysql_connect( "localhost","root","Isr0704@");
-	}
 	
 	
 	switch( $_REQUEST["action"] ){
@@ -30,11 +28,15 @@
 			
 			$qry = sprintf( "select id,name,mail from
 			register where mail='%s' 
-			and password='%s'",mysql_real_escape_string( $_REQUEST['mail'] ),
-			mysql_real_escape_string( $_REQUEST['password']),$conexao );
+			and password='%s'",mysqli_real_escape_string( $conn, $_REQUEST['mail'] ),
+			mysqli_real_escape_string( $conn, $_REQUEST['password']) );
 		
-			$result = fMySQL_Connect($qry);
-			if( mysql_num_rows($result ) ){
+			$result =  $conn->query( $qry );
+
+			$rows = mysqli_num_rows($result);
+
+
+			if(  $rows  ){
 
 
 				header("Expires: -1");
@@ -45,10 +47,11 @@
 				header("Pragma: no-cache");
 
 
-				$aUser = mysql_fetch_array( $result ) ;
-				$_SESSION["nameUser"] = $aUser["name"];
-				$_SESSION["id"] = $aUser["id"];
-				$_SESSION["mail"] = $aUser["mail"];
+				while ( $aUser = $result->fetch_assoc() ) {
+					$_SESSION["nameUser"] = $aUser["name"];
+					$_SESSION["id"] = $aUser["id"];
+					$_SESSION["mail"] = $aUser["mail"];
+				}
 				$rot = "inhome.php";
 
 
