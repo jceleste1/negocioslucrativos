@@ -4,9 +4,10 @@ Bem vindo <b><?=$_SESSION["nameUser"]?></b>
 <table align='center'>
 <?
 $qry = "select id  from contatos c where c.id_userto ='".$_SESSION["id"]."' and c.dateread is null";
-$result = fMySQL_Connect($qry);
-$rows = mysql_num_rows($result);
-if( $rows ){?>
+
+$result =  $conn->query( $qry );
+while ( $line = $result->fetch_assoc() ) {
+?>
 <tr>
 	<td align='center' colspan=2 valign="top">
 			<p align='justify' valign="top"><a href="mvcAnnouncement.php?action=viewMessage"><img src='./img/msg_unread.gif' border=0>&nbsp;&nbsp; Existem mensagens novas para você</p>
@@ -66,8 +67,9 @@ if( $rows ){?>
 <br/>
 <?
 $qry = "select a.id,a.title,a.sector,a.typecompany,viewcount  from announcement a where id_user='".$_SESSION["id"]."'";
-$result = fMySQL_Connect($qry);
-$rows = mysql_num_rows($result);
+$result =  $conn->query( $qry );
+$rows = mysqli_num_rows($result);
+
 if( $rows ){
 ?>
 <font class='tituloAdv'>Meus anúncios</font>
@@ -84,7 +86,7 @@ if( $rows ){
 
 </tr>
 <?
-	for ($i=0;$i<$rows;$i++)   {
+	while ( $line = $result->fetch_assoc() ) {
 	
 		 $font = "<font color=darkblue>";
 		 $bgcolor = " bgcolor='#FDFDFD'";
@@ -94,7 +96,7 @@ if( $rows ){
 		 }
 	
 	
-		 $line=mysql_fetch_assoc($result);
+		
 		 echo "<tr>";
 		 echo "<td  $bgcolor>$font".$line["title"]."</td>";
 		 echo "<td  $bgcolor>$font".$aSector[$line["sector"]]."</td>";
@@ -104,6 +106,7 @@ if( $rows ){
 		 echo "<td  $bgcolor><a href=\"javascript:go_erase(".$line["id"].");\">$font Excluir</a></td>";
 		 echo "<td  align=center  $bgcolor><a href=mvcAnnouncement.php?action=image&id_adv=".$line["id"]."><b>$font FOTOS DO EMPREENDIMENTO</b></a></td>";
 		 echo "</tr>";
+		 $i++;
 	}
 ?>
 </table>
