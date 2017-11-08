@@ -179,11 +179,15 @@
 				$viewcount = ( $dataAnnouncement["viewcount"] +1 ) ;
 
 				$rot = "viewAnnouncement.php";
+				mysqli_close ( $conn );
+
+				$conn = connectDB();
 
 				$qry = sprintf("update  announcement set viewcount=$viewcount where id='%s'", 
 				mysqli_real_escape_string($conn,$_REQUEST["id_adv"]) );				
 
 				$res =  $conn->query( $qry );
+
 				break;
 		case "sendMsg":
 				$qry = "select a.id_user,r.name,r.mail, a.title,a.typeannouncement from announcement  a,register r  where a.id='".$_REQUEST['id_adv']."' and a.id_user=r.id";
