@@ -177,7 +177,8 @@
 				$dataAnnouncement = $result->fetch_assoc() ;
 
 				$viewcount = ( $dataAnnouncement["viewcount"] +1 ) ;
-
+				echo "parou...............";
+break;
 				$rot = "viewAnnouncement.php";
 				mysqli_close ( $conn );
 
