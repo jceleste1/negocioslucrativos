@@ -9,10 +9,19 @@
  
 	include("config.inc");
 	 $conn = connectDB();
+
+	 $action = "";
 	
-	
-	
-	switch( $_REQUEST["action"] ){
+	if (isset($_REQUEST["action"])) 
+	 $action = $_REQUEST["action"];
+
+
+	if (isset($_POST["action"])) 
+	 $action = $_POST["action"];
+
+
+
+	switch( $action ){
 		case "login":
         		    $erro = 1;
 
