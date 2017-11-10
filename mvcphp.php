@@ -19,7 +19,7 @@ echo "passei 2";
 	if (isset($_POST["action"])) 
 	 $action = $_POST["action"];
 
-echo "passei 3".$action;
+echo "passei 3".$action; break;
 
 
 	switch( $action ){
