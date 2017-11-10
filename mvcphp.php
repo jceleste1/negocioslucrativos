@@ -25,7 +25,7 @@
 
 			echo "blbalba";
 
-			} 
+			
 			break;
 		case "forgetPassword":
 			$rot = "forgetPassword.php";
