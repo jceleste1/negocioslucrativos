@@ -1,7 +1,7 @@
 <? 
 	session_start();
 
-
+	echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@passei 1";
 
 	header('Content-Type: text/html; charset=ISO-8859-1');
 
