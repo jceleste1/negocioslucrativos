@@ -101,8 +101,7 @@
 			$qry = "select * from register where id='".$_SESSION["id"]."'";
 			
 			$result =  $conn->query( $qry );
-			$dataUser =  $result->fetch_assoc() ;
-
+		
 
 			$action = "updateDataUser";
 			
