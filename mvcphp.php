@@ -11,14 +11,15 @@
 	 $conn = connectDB();
 
 	 $action = "";
-	
+	echo "passei 1";
 	if (isset($_REQUEST["action"])) 
 	 $action = $_REQUEST["action"];
-
+echo "passei 2";
 
 	if (isset($_POST["action"])) 
 	 $action = $_POST["action"];
 
+echo "passei 3".$action;
 
 
 	switch( $action ){
