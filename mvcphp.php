@@ -5,14 +5,14 @@
 
 	header('Content-Type: text/html; charset=ISO-8859-1');
 
-
+	echo "passei 2222";
  
 	include("config.inc");
 	 $conn = connectDB();
 
 	 $action = "";
 	echo "passei 1";
-	if (isset($_REQUEST["action"])) 
+	if (isset($_REQUEST["action"]) ) 
 	 $action = $_REQUEST["action"];
 echo "passei 2";
 
