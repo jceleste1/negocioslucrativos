@@ -101,7 +101,7 @@
 			$qry = "select * from register where id='".$_SESSION["id"]."'";
 			
 			$result =  $conn->query( $qry );
-		
+			
 
 			$action = "updateDataUser";
 			
@@ -152,7 +152,7 @@
 					$result =  $conn->query( $qry );		
 
 					$_SESSION["nameUser"] = $name;
-					$_SESSION["id"] = mysqli_insert_id();
+					$_SESSION["id"] = mysql_insert_id();
 					$_SESSION["mail"] = $_REQUEST["mail"];
 					$rot = "inhome.php";
 			}
