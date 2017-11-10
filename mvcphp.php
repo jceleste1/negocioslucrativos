@@ -24,11 +24,11 @@
 			register where mail='%s' 
 			and password='%s'",mysqli_real_escape_string( $conn, $_REQUEST['mail'] ),
 			mysqli_real_escape_string( $conn, $_REQUEST['password']) );
-		
+echo |$qry;		
 			$result =  $conn->query( $qry );
-
+echo "processando...";
 			$rows = mysqli_num_rows($result);
-
+echo "processando...1 -- ".$rows;
 
 			if(  $rows  ){
 
