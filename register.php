@@ -3,6 +3,7 @@
 // $msg = "cadastro de usuarios ".$_SERVER['REMOTE_ADDR']; 
 // mail("jceleste.coop@transitbrasil.com.br",$msg,$msg,"" );
 
+while (	$dataUser =  $result->fetch_assoc()  ){
 
 ?>
 
@@ -123,7 +124,8 @@
 	<td ><INPUT type=password maxLength=15 size=15  name=password1>&nbsp;&nbsp;<FONT face=verdana color=darkred   size=1><B>&nbsp; </B></FONT>						
 	</td>
  </tr>
-<? } ?>
+<? } 
+}?>
 
  <tr>
 	<td align='center' colspan='4'><input type=submit value=Enviar name=btRegister>   </td>
