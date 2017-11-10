@@ -66,7 +66,7 @@
 			register where mail='%s'",
 			mysqli_real_escape_string($conn,$_REQUEST['mail'] ) );
 			$result =  $conn->query( $qry );
-
+			$achou = false;
 			while ( $aUser = $result->fetch_assoc() ) {
 
 			    $headers  =  "From: Suporte negocioslucrativos.com <jceleste@brasilforte.com.br> To: ".$aUser["name"]."<".$aUser["mail"].">";
@@ -76,8 +76,9 @@
 				$msg .= "Atenciosamente \n";
 				$msg .= "Equipe http://negocioslucrativos.com \n";
 			    $subject = "Senha de acesso  para o site negocioslucrativos.com";
+					$achou = true;
 			}
-
+			if( $achou ) {
 				mail($aUser["mail"],$subject,$msg,$headers  );			
 				$rot = "msgSystem.php";
 			} else{
@@ -101,17 +102,13 @@
 			$qry = "select * from register where id='".$_SESSION["id"]."'";
 			
 			$result =  $conn->query( $qry );
-			
-
+		
 			$action = "updateDataUser";
 			
 			$rot = "register.php";
 			break;
 
 		case "updateDataUser":
-
-
-
 			$qry = "update register set	name=\"".$_REQUEST[name]."\",		mail=\"".$_REQUEST[mail]."\" ,address= \"".$_REQUEST[address]."\",	numberaddress=\"".$_REQUEST[numberAddress]."\" ,	district=\"".$_REQUEST[district]."\",		zipcode=\"".$_REQUEST[zipcode]."\" ,	city=\"".$_REQUEST[city]."\" , state=\"".$_REQUEST[state]."\",	phonemobile=\"".$_REQUEST[phonemobile]."\"  ,		phone=\"".$_REQUEST[phone]."\"	where id='".$_SESSION["id"]."'";
 			$result =  $conn->query( $qry );
 			
@@ -125,10 +122,9 @@
 			mysqli_real_escape_string($conn, $_REQUEST['mail'] ) );
 	
 			$result =  $conn->query( $qry );
-			$rot = "register.php";
-			$rows = mysqli_num_rows($result);
 
-			if( $rows  ){
+			$rot = "register.php";
+			if(  mysqli_num_rows($result )  ){
 	            $erro = 2;			
 			}
 			if( $_REQUEST["confirmacao"] !=  $_SESSION['autenticagd']   ){
