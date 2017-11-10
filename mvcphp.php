@@ -152,7 +152,7 @@
 					$result =  $conn->query( $qry );		
 
 					$_SESSION["nameUser"] = $name;
-					$_SESSION["id"] = mysql_insert_id();
+					$_SESSION["id"] = mysqli_insert_id();
 					$_SESSION["mail"] = $_REQUEST["mail"];
 					$rot = "inhome.php";
 			}
