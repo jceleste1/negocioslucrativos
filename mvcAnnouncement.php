@@ -194,46 +194,52 @@
 				$dataAnnouncementUser = $result->fetch_assoc() ;
 
 
-				$subjectMail = "Interessado sobre o anuncio ".$dataAnnouncementUser["title"]  ;
-				$subject .= "Interessado sobre o anuncio ".$dataAnnouncementUser["title"]."<br>"   ;
+				while ( $line = $result->fetch_assoc() ) {
+		
+					$subjectMail = "Interessado sobre o anuncio ".$dataAnnouncementUser["title"]  ;
+					$subject .= "Interessado sobre o anuncio ".$dataAnnouncementUser["title"]."<br>"   ;
 
-				$msg .= $subject."<br><br><br>";
+					$msg .= $subject."<br><br><br>";
 
-				$msg .= "Prezado ".$dataAnnouncementUser["name"]."<br><br>"   ;
+					$msg .= "Prezado ".$dataAnnouncementUser["name"]."<br><br>"   ;
 
-				$msg .= "Estamos direcionando para você um e-mail referente ao seu anúncio.<br>";
-				$msg .= "Para visualizar a mensagem completa, por favor acesse o site,  <br>";
-				$msg .= "http://www.negocioslucrativos.com.br <br>";
-				$msg .= "Digite seu login e senha e acesse o link  'Novas mensagens' .<br><br>";
-
-
-//				$msg .= "Nome: ".$_SESSION["nameUser"]."<br>";
-//				$msg .= "E-mail: ".$_SESSION["mail"]."<br>";
-				$msg .= "Mensagem: ".substr($_REQUEST["message"], 0, 7)." ....<br>";
+					$msg .= "Estamos direcionando para você um e-mail referente ao seu anúncio.<br>";
+					$msg .= "Para visualizar a mensagem completa, por favor acesse o site,  <br>";
+					$msg .= "http://www.negocioslucrativos.com.br <br>";
+					$msg .= "Digite seu login e senha e acesse o link  'Novas mensagens' .<br><br>";
 
 
-//				if( $_REQUEST["dddcom"] and	$_REQUEST["fonecom"] )
-//					$msg .= "Fone (".$_REQUEST["dddcom"].")  ".$_REQUEST["fonecom"]."<hr>";
-
-				$msg .=  "<br><br><br>";
-				$msg .= " Atenciosamente <br><br>";
-
-				$msg .= "http://www.negocioslucrativos.com.br";
-
-				$headers  = "MIME-Version: 1.0\r\n";
-				$headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
-//				$headers .= "From: ".$_SESSION["name"]."<".$_SESSION["mail"].">\n\r";
-
-				$headers .= "From: NegociosLucrativos.com.br<negocioslucrativos@brasilforte.com.br>\n\r";
-				$headers .= "To: ".$dataAnnouncementUser["name"]."<".$dataAnnouncementUser["mail"].">\n\r";
+	//				$msg .= "Nome: ".$_SESSION["nameUser"]."<br>";
+	//				$msg .= "E-mail: ".$_SESSION["mail"]."<br>";
+					$msg .= "Mensagem: ".substr($_REQUEST["message"], 0, 7)." ....<br>";
 
 
-				mail($dataAnnouncementUser["mail"],$subjectMail,$msg,$headers);
-				//mail("jceleste@brasilforte.com.br",$subjectMail,$msg,$headers);
+	//				if( $_REQUEST["dddcom"] and	$_REQUEST["fonecom"] )
+	//					$msg .= "Fone (".$_REQUEST["dddcom"].")  ".$_REQUEST["fonecom"]."<hr>";
 
-				$qry = "insert into contatos ( id_userto,msg,datainc,id_userof ) values (  '";
-				$qry .= $dataAnnouncementUser["id_user"]."','".$_REQUEST["message"]."',now(),'".$_SESSION["id"]."')";
+					$msg .=  "<br><br><br>";
+					$msg .= " Atenciosamente <br><br>";
+
+					$msg .= "http://www.negocioslucrativos.com.br";
+
+					$headers  = "MIME-Version: 1.0\r\n";
+					$headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
+	//				$headers .= "From: ".$_SESSION["name"]."<".$_SESSION["mail"].">\n\r";
+
+					$headers .= "From: NegociosLucrativos.com.br<negocioslucrativos@brasilforte.com.br>\n\r";
+					$headers .= "To: ".$dataAnnouncementUser["name"]."<".$dataAnnouncementUser["mail"].">\n\r";
+
+
+					mail($dataAnnouncementUser["mail"],$subjectMail,$msg,$headers);
+					//mail("jceleste@brasilforte.com.br",$subjectMail,$msg,$headers);
+
+					$qry = "insert into contatos ( id_userto,msg,datainc,id_userof ) values (  '";
+					$qry .= $dataAnnouncementUser["id_user"]."','".$_REQUEST["message"]."',now(),'".$_SESSION["id"]."')";
 					$result =  $conn->query( $qry );
+				}
+
+
+
 
 				$msg = 1;
 				$rot = "msgSystem.php";
