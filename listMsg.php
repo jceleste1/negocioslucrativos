@@ -2,9 +2,7 @@
 <link rel="stylesheet" href="pagging.css">
 <center>
 <table  style="padding:5em; background-color:#e7f1f6; border:0px solid #FF0000"  width='100%'>
-  <tr>
-	<td bgcolor='white' colspan='4'>&nbsp;</td>
- </tr>
+
   <tr>
 	  <td bgcolor='white' colspan='4' align=center>
 			<script type="text/javascript"><!--
@@ -33,30 +31,15 @@
 $registrosPorPagina = 10;
 $registroInicial = 0;
 $ultimoRegistro = 0;
-/*
- if($_POST[typeMsg] =='sent' )
-	$qry = "SELECT  c.id,r.name,r.mail, c.msg, r.phone, r.phonemobile,c.datainc,c.msg 
-	FROM contatos c, register r
-	where c.id_userof = r.id  and c.id_userto =".$_SESSION["id"]." and c.dateread is not null order by c.datainc desc ";
-	
-else
-	$qry = "SELECT 
-	               c.id,r.name,r.mail, c.msg, r.phone,
-	               r.phonemobile,c.datainc,c.msg 
-	FROM 
-	      contatos c, register r 
-	where 
-	       c.id_userto = r.id and 
-	       c.id_userof =$_SESSION[id] order by c.datainc desc";
-*/
+
 
 $qry = "SELECT  c.id,r.name,r.mail, c.msg, r.phone, r.phonemobile,c.datainc,c.msg 
 	FROM contatos c, register r
 	where c.id_userof = r.id  and c.id_userto =".$_SESSION["id"]."  order by c.datainc desc ";
 
 // echo $qry;
-$result2 = fMySQL_Connect($qry);	
-$_rows_ = mysql_num_rows($result2);
+$result =  $conn->query( $qry );
+$_rows_ = mysqli_num_rows($result);
 
 ?>
 
@@ -78,9 +61,9 @@ $_rows_ = mysql_num_rows($result2);
 
 <?
 
+$i = 0;
+while ( $line = $result->fetch_assoc() ) {
 
-for ($i=0;$i<$_rows_;$i++)   {
-	 $line=mysql_fetch_assoc($result2);
 
 	 $font = "<font color='#24486C'>";
 	 $bgcolor = " bgcolor='#FDFDFD'";
@@ -109,6 +92,7 @@ for ($i=0;$i<$_rows_;$i++)   {
 
 
 	 echo "</tr>";
+	 $i++;
 }
 ?>
 
