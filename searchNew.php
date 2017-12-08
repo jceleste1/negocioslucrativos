@@ -6,14 +6,14 @@
 
 	<table   width='95%' cellpadding="3" cellspacing="1" border=0  align='center'>
 		<tr>
-			<td colspan=4 align=center  class='grayS'>Busca de oportunidades de negócios</td>
+			<td colspan=4 align=center  class='grayS'>Busca de oportunidades de negÃ³cios</td>
 		</tr>
 		<tr>
 			<td class="grayS">Palavra Chave</td>
 			<td align=left>
 				<input type="text" name="txtSearch" id="txtSearch" size=40 value="<?=$_REQUEST[txtSearch]?>" />
 			</td>
-			<td class="grayS">&nbsp;&nbsp;Tipo de anúncio</td>
+			<td class="grayS">&nbsp;&nbsp;Tipo de anÃºncio</td>
 			<td>
 				<?
 					$selectedS = " selected ";
@@ -21,8 +21,8 @@
 						$selectedB = " selected ";
 				?>
 				<select name="typeAnManual" id="typeAnManual" style="width:220px;" >
-					<option value="S" <?=$selectedS?>>Anúncios de empresas a venda</option>
-					<option value="B" <?=$selectedB?>>Anúncios de investidores e compradores</option>
+					<option value="S" <?=$selectedS?>>AnÃºncios de empresas a venda</option>
+					<option value="B" <?=$selectedB?>>AnÃºncios de investidores e compradores</option>
 				</select>
 			</td>
 			</tr>
@@ -50,9 +50,9 @@
 			<td align=left>
 			<Select ID="typecompany" Name="typecompany" Size=1 >
 				<option Value=''></option>
-				<option Value='I' <?=$checkedI?>>Indústria</option>
-				<option Value='C' <?=$checkedC?>>Comércio</option>
-				<option Value='S' <?=$checkedS?>>Serviço</option>
+				<option Value='I' <?=$checkedI?>>IndÃºstria</option>
+				<option Value='C' <?=$checkedC?>>ComÃ©rcio</option>
+				<option Value='S' <?=$checkedS?>>ServiÃ§o</option>
 				</Select>
 			</td>
 			</tr>
@@ -74,7 +74,7 @@
 				</Select>
 			</td>
 			<td class="grayS">
-				Região
+				RegiÃ£o
 			</td>
 			<td> <Select ID="zone" Name="zone" Size=1 >
 			    <optgroup>
