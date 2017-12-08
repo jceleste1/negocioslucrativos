@@ -1,4 +1,4 @@
-<div id="divSearch">
+﻿<div id="divSearch">
 <form action="mvcAnnouncement.php" id="formSearch"   METHOD=GET>
 <input type=hidden name='action' value="list">
 <input type=hidden name='lupa_x' value="1">
